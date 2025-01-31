@@ -1,4 +1,4 @@
-namespace BSynchro.RJP.Accounts.WebAPI
+namespace BSynchro.RJP.Transactions.WebAPI
 {
     public class WeatherForecast
     {

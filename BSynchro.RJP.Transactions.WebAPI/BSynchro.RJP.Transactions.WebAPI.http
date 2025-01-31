@@ -1,0 +1,6 @@
+@BSynchro.RJP.Transactions.WebAPI_HostAddress = http://localhost:5182
+
+GET {{BSynchro.RJP.Transactions.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

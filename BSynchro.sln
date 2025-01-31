@@ -3,13 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.WebAPI", "BSynchro.RJP.WebAPI\BSynchro.RJP.WebAPI.csproj", "{4C70C12C-E95E-431C-B0B5-7A748F463EE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.WebAPI", "BSynchro.RJP.WebAPI\BSynchro.RJP.Accounts.WebAPI.csproj", "{4C70C12C-E95E-431C-B0B5-7A748F463EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Application", "BSynchro.RJP.Application\BSynchro.RJP.Application.csproj", "{6CE47AAA-0DC6-47B6-A418-27451382B266}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.Application", "BSynchro.RJP.Application\BSynchro.RJP.Accounts.Application.csproj", "{6CE47AAA-0DC6-47B6-A418-27451382B266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Domain", "BSynchro.RJP.Domain\BSynchro.RJP.Domain.csproj", "{D52E065D-98A0-429C-8509-81AA634E8009}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.Domain", "BSynchro.RJP.Domain\BSynchro.RJP.Accounts.Domain.csproj", "{D52E065D-98A0-429C-8509-81AA634E8009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Infrastructure", "BSynchro.RJP.Infrastructure\BSynchro.RJP.Infrastructure.csproj", "{9E906F9D-6866-4F59-A2A1-9B8B7C550240}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.Infrastructure", "BSynchro.RJP.Infrastructure\BSynchro.RJP.Accounts.Infrastructure.csproj", "{9E906F9D-6866-4F59-A2A1-9B8B7C550240}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1A549D8C-297F-4839-BFF1-2376351FF478}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transactions", "Transactions", "{18B36FAF-DFCE-4A5B-A97A-19A5E2055E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Transactions.WebAPI", "BSynchro.RJP.Transactions.WebAPI\BSynchro.RJP.Transactions.WebAPI.csproj", "{820C6663-0F30-41C9-AC37-BA2B238EC6A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Transactions.Application", "BSynchro.RJP.Transactions.Application\BSynchro.RJP.Transactions.Application.csproj", "{CAE05BC8-69C7-4BF7-BA98-866FCE08B611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Transactions.Domain", "BSynchro.RJP.Domain.Application\BSynchro.RJP.Transactions.Domain.csproj", "{E51F6985-86B1-45F6-82CA-C688323416EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Transactions.Infrastructure", "BSynchro.RJP.Transactions.Infrastructure\BSynchro.RJP.Transactions.Infrastructure.csproj", "{A5328EBC-2B92-4E77-8EE1-57D74A9D493B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +47,36 @@ Global
 		{9E906F9D-6866-4F59-A2A1-9B8B7C550240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E906F9D-6866-4F59-A2A1-9B8B7C550240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E906F9D-6866-4F59-A2A1-9B8B7C550240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{820C6663-0F30-41C9-AC37-BA2B238EC6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820C6663-0F30-41C9-AC37-BA2B238EC6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820C6663-0F30-41C9-AC37-BA2B238EC6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820C6663-0F30-41C9-AC37-BA2B238EC6A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAE05BC8-69C7-4BF7-BA98-866FCE08B611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAE05BC8-69C7-4BF7-BA98-866FCE08B611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAE05BC8-69C7-4BF7-BA98-866FCE08B611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAE05BC8-69C7-4BF7-BA98-866FCE08B611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51F6985-86B1-45F6-82CA-C688323416EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51F6985-86B1-45F6-82CA-C688323416EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51F6985-86B1-45F6-82CA-C688323416EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51F6985-86B1-45F6-82CA-C688323416EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5328EBC-2B92-4E77-8EE1-57D74A9D493B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5328EBC-2B92-4E77-8EE1-57D74A9D493B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5328EBC-2B92-4E77-8EE1-57D74A9D493B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5328EBC-2B92-4E77-8EE1-57D74A9D493B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C70C12C-E95E-431C-B0B5-7A748F463EE5} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
+		{6CE47AAA-0DC6-47B6-A418-27451382B266} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
+		{D52E065D-98A0-429C-8509-81AA634E8009} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
+		{9E906F9D-6866-4F59-A2A1-9B8B7C550240} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
+		{6FD7E9A5-AB48-43F7-B1B4-35E3E0027491} = {1A549D8C-297F-4839-BFF1-2376351FF478}
+		{18B36FAF-DFCE-4A5B-A97A-19A5E2055E55} = {1A549D8C-297F-4839-BFF1-2376351FF478}
+		{820C6663-0F30-41C9-AC37-BA2B238EC6A3} = {18B36FAF-DFCE-4A5B-A97A-19A5E2055E55}
+		{CAE05BC8-69C7-4BF7-BA98-866FCE08B611} = {18B36FAF-DFCE-4A5B-A97A-19A5E2055E55}
+		{E51F6985-86B1-45F6-82CA-C688323416EB} = {18B36FAF-DFCE-4A5B-A97A-19A5E2055E55}
+		{A5328EBC-2B92-4E77-8EE1-57D74A9D493B} = {18B36FAF-DFCE-4A5B-A97A-19A5E2055E55}
 	EndGlobalSection
 EndGlobal
