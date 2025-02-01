@@ -47,7 +47,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Middlewares
                     // Handle FluentValidation errors (400 Bad Request)
                     httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     response.HttpStatusCode = HttpStatusCode.BadRequest;
-                    response.ErrorMessage = BusinessMessages.ValidationFailed;
+                    response.Message = BusinessMessages.ValidationFailed;
                     response.ValidationErrors = validationException.Errors.Select(e => e.ErrorMessage).ToList();
                     break;
 
@@ -55,14 +55,14 @@ namespace BSynchro.RJP.Accounts.WebAPI.Middlewares
                     // Handle not found errors (404)
                     httpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     response.HttpStatusCode = HttpStatusCode.NotFound;
-                    response.ErrorMessage = exception.Message;
+                    response.Message = exception.Message;
                     break;
 
                 default:
                     // Handle other unhandled exceptions (500)
                     httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     response.HttpStatusCode = HttpStatusCode.InternalServerError;
-                    response.ErrorMessage = BusinessMessages.ErrorOccurred;
+                    response.Message = BusinessMessages.ErrorOccurred;
                     break;
             }
 

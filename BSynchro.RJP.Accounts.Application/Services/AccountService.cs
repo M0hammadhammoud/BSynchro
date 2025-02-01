@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BSynchro.RJP.Accounts.Application.Constants;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
 using BSynchro.RJP.Accounts.Domain.Contracts;
@@ -17,16 +18,18 @@ namespace BSynchro.RJP.Accounts.Application.Services
             _mapper = mapper;
         }
 
-        public async Task OpenAccountAsync(OpenAccountDTO openAccount)
+        public async Task<string> OpenAccountAsync(OpenAccountDTO openAccount)
         {
             var account = _mapper.Map<Account>(openAccount);
+            _unitOfWork.Repository<Account>().Add(account);
+            await _unitOfWork.Save();
 
             if (openAccount.InitialCredit > 0)
             {
                 //create transaction for this part
             }
 
-            _unitOfWork.Repository<Account>().Add(account);
+            return BusinessMessages.AccountCreated;
         }
     }
 }

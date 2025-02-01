@@ -6,7 +6,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Models.Responses
     public class BaseResponse
     {
         public HttpStatusCode HttpStatusCode { get; set; } = HttpStatusCode.OK;
-        public string? ErrorMessage { get; set; }
+        public string? Message { get; set; }
         public List<string> ValidationErrors { get; set; } = [];
         public override string ToString()
         {

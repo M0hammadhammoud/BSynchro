@@ -4,6 +4,6 @@ namespace BSynchro.RJP.Accounts.Application.Contracts
 {
     public interface IAccountService
     {
-        Task OpenAccountAsync(OpenAccountDTO openAccount);
+        Task<string> OpenAccountAsync(OpenAccountDTO openAccount);
     }
 }

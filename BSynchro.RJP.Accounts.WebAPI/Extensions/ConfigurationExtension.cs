@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BSynchro.RJP.Accounts.Application;
-using BSynchro.RJP.Accounts.Application.Mapping;
 using BSynchro.RJP.Accounts.Infrastructure;
+using BSynchro.RJP.Accounts.WebAPI.Mapping;
 using BSynchro.RJP.Accounts.WebAPI.Middlewares;
 using Common.Utitlities.Contracts;
 using Common.Utitlities.Helpers;
@@ -27,24 +27,41 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
             //repositories
             builder.Services.InjectRepositories(builder.Configuration);
 
+            //configure data protector
+            var dataProtector = builder.Services.ConfigureDataProtector();
+
             //autmapper
-            builder.Services.ConfigureAutoMapper();
+            builder.Services.ConfigureAutoMapper(dataProtector);
+
 
             // IN-MEMORY CACHE CONFIGURATION
             services.AddSingleton<ICacheManager, CacheManager>();
             services.AddMemoryCache();
         }
 
-        public static void ConfigureDataProtector(this IServiceCollection services)
+        public static IDataProtector ConfigureDataProtector(this IServiceCollection services)
         {
             var dataProtectionProvider = DataProtectionProvider.Create("AccountsAPI");
-            var protector = dataProtectionProvider.CreateProtector("Accounts.API");
+            var protector = dataProtectionProvider.CreateProtector("BSynchro.RJP.Accounts.API");
             services.AddSingleton(protector);
+
+            return protector;
         }
        
-        public static void UseCustomExceptionMiddleware(this IApplicationBuilder app)
+        public static void UseCustomInterceptorMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<InterceptorMiddleware>();
+        }
+
+        public static void ConfigureAutoMapper(this IServiceCollection services, IDataProtector dataProtector)
+        {
+            var mappingConfiguration = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile(dataProtector));
+            });
+
+            var mapper = mappingConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }

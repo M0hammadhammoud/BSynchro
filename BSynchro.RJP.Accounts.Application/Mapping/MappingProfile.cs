@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BSynchro.RJP.Accounts.Application.Models.DTOs;
+using BSynchro.RJP.Accounts.Domain.Entities;
 
 namespace BSynchro.RJP.Accounts.Application.Mapping
 {
@@ -6,8 +8,7 @@ namespace BSynchro.RJP.Accounts.Application.Mapping
     {
         public MappingProfile()
         {
-            //automapper configuration
-
+            CreateMap<OpenAccountDTO, Account>();
         }
     }
 }

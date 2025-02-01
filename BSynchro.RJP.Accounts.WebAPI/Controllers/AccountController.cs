@@ -3,6 +3,7 @@ using Azure;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
 using BSynchro.RJP.Accounts.WebAPI.Models.Requests;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
 using BSynchro.RJP.Accounts.WebAPI.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,7 @@ namespace BSynchro.RJP.WebAPI.Controllers
             _accountValidator = accountValidator;
         }
 
-        [HttpPost("open")]
+        [HttpPost("Open")]
         public async Task<IActionResult> OpenAccount(OpenAccountRequest request)
         {
             // Validate the request
@@ -42,21 +43,16 @@ namespace BSynchro.RJP.WebAPI.Controllers
             }
 
             var accountDto = _mapper.Map<OpenAccountDTO>(request);
-            //var account = await _accountService.OpenAccountAsync(accountDto);
+            var result = await _accountService.OpenAccountAsync(accountDto);
+            var response = _mapper.Map<BaseResponse>(result);
 
-            //var result = await _accountService.OpenAccount();
-            //var response = _mapper.Map<SearchResponse>(result);
-
-            //return StatusCode((int)response.HttpStatusCode, response);
-            return StatusCode(200);
+            return StatusCode((int)response.HttpStatusCode, response);
         }
 
-        //[HttpGet("{customerId}")]
-        //public async Task<IActionResult> GetCustomerAccounts(Guid customerId)
-        //{
-        //    var query = new GetCustomerAccountsQuery(customerId);
-        //    var result = await _mediator.Send(query);
-        //    return Ok(result);
-        //}
+        [HttpPost("GetUserInformation")]
+        public async Task<IActionResult> GetUserInformation(GetUserInformationRequest request)
+        {
+            return Ok("result");
+        }
     }
 }

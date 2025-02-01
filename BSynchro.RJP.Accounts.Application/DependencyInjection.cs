@@ -13,6 +13,8 @@ namespace BSynchro.RJP.Accounts.Application
             services.AddScoped<IRequestInfoService, RequestInfoService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ITransactionService, TransactionService>();
+
+            services.ConfigureAutoMapper();
         }
 
         public static void ConfigureAutoMapper(this IServiceCollection services)
