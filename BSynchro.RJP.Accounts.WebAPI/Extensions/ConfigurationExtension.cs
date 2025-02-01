@@ -3,10 +3,12 @@ using BSynchro.RJP.Accounts.Application;
 using BSynchro.RJP.Accounts.Infrastructure;
 using BSynchro.RJP.Accounts.WebAPI.Mapping;
 using BSynchro.RJP.Accounts.WebAPI.Middlewares;
+using BSynchro.RJP.Accounts.WebAPI.Validators;
 using Common.Utitlities.Contracts;
 using Common.Utitlities.Helpers;
 using Microsoft.AspNetCore.DataProtection;
 using Serilog;
+using FluentValidation;
 
 namespace BSynchro.RJP.Accounts.WebAPI.Extensions
 {
@@ -21,18 +23,20 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
             //Add IHttpContextAccessor
             services.AddHttpContextAccessor();
 
+            //configure data protector
+            var dataProtector = builder.Services.ConfigureDataProtector();
+
+            // Register FluentValidation
+            builder.Services.AddValidatorsFromAssemblyContaining<AccountValidator>();
+
             //services
             builder.Services.InjectServices();
 
             //repositories
             builder.Services.InjectRepositories(builder.Configuration);
 
-            //configure data protector
-            var dataProtector = builder.Services.ConfigureDataProtector();
-
             //autmapper
             builder.Services.ConfigureAutoMapper(dataProtector);
-
 
             // IN-MEMORY CACHE CONFIGURATION
             services.AddSingleton<ICacheManager, CacheManager>();
@@ -58,6 +62,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
             var mappingConfiguration = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile(dataProtector));
+                mc.AddProfile(new Application.Mapping.MappingProfile(dataProtector));
             });
 
             var mapper = mappingConfiguration.CreateMapper();

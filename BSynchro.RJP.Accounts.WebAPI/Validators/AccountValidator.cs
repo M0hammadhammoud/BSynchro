@@ -1,4 +1,4 @@
-﻿using BSynchro.RJP.Accounts.WebAPI.Models.Requests;
+﻿using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
 using FluentValidation;
 using Microsoft.AspNetCore.DataProtection;
 
@@ -20,7 +20,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Validators
 
             RuleFor(a => a.InitialCredit)
                 .GreaterThanOrEqualTo(0)
-                .WithMessage("Initial creadit can't be negative.");
+                .WithMessage("Initial credit can't be negative.");
         }
 
         private bool ValidateCustomerId(string customerId)

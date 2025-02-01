@@ -1,10 +1,9 @@
 using AutoMapper;
-using Azure;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
-using BSynchro.RJP.Accounts.WebAPI.Models.Requests;
+using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
-using BSynchro.RJP.Accounts.WebAPI.Validators;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -45,6 +44,15 @@ namespace BSynchro.RJP.WebAPI.Controllers
             var accountDto = _mapper.Map<OpenAccountDTO>(request);
             var result = await _accountService.OpenAccountAsync(accountDto);
             var response = _mapper.Map<BaseResponse>(result);
+
+            return StatusCode((int)response.HttpStatusCode, response);
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _accountService.GetAllCustomersAsync();
+            var response = _mapper.Map<GetAllCustomersResponse>(result);
 
             return StatusCode((int)response.HttpStatusCode, response);
         }

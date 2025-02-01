@@ -31,5 +31,11 @@ namespace BSynchro.RJP.Accounts.Application.Services
 
             return BusinessMessages.AccountCreated;
         }
+
+        public async Task<List<CustomerDTO>> GetAllCustomersAsync()
+        {
+            var customers = await _unitOfWork.Repository<Customer>().GetAllAsync();
+            return _mapper.Map<List<CustomerDTO>>(customers);
+        }
     }
 }

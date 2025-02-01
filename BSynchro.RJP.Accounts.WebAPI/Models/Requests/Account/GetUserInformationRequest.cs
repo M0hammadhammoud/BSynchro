@@ -1,4 +1,4 @@
-﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Requests
+﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account
 {
     public class GetUserInformationRequest
     {

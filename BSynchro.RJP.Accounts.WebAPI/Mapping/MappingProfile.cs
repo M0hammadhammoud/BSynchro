@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
-using BSynchro.RJP.Accounts.WebAPI.Models.Requests;
+using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace BSynchro.RJP.Accounts.WebAPI.Mapping
@@ -19,6 +20,9 @@ namespace BSynchro.RJP.Accounts.WebAPI.Mapping
 
             CreateMap<string, BaseResponse>()
                 .ForMember(dest => dest.Message, opt => opt.MapFrom(src => src));
+
+            CreateMap<List<CustomerDTO>, GetAllCustomersResponse>()
+                .ForMember(dest => dest.Customers, opt => opt.MapFrom(src => src));
         }
     }
 }
