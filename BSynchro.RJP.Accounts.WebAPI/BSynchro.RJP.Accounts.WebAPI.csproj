@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BSynchro.RJP.Application\BSynchro.RJP.Accounts.Application.csproj" />
-    <ProjectReference Include="..\BSynchro.RJP.Infrastructure\BSynchro.RJP.Accounts.Infrastructure.csproj" />
+    <ProjectReference Include="..\BSynchro.RJP.Accounts.Application\BSynchro.RJP.Accounts.Application.csproj" />
+    <ProjectReference Include="..\BSynchro.RJP.Accounts.Infrastructure\BSynchro.RJP.Accounts.Infrastructure.csproj" />
     <ProjectReference Include="..\Common.Utitlities\Common.Utitlities.csproj" />
   </ItemGroup>
 

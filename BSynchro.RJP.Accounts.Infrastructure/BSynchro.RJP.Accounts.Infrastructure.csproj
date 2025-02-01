@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BSynchro.RJP.Domain\BSynchro.RJP.Accounts.Domain.csproj" />
+    <ProjectReference Include="..\BSynchro.RJP.Accounts.Domain\BSynchro.RJP.Accounts.Domain.csproj" />
   </ItemGroup>
 
 </Project>

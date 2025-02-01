@@ -1,4 +1,5 @@
 using AutoMapper;
+using Azure;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
 using BSynchro.RJP.Accounts.WebAPI.Models.Requests;
@@ -41,12 +42,13 @@ namespace BSynchro.RJP.WebAPI.Controllers
             }
 
             var accountDto = _mapper.Map<OpenAccountDTO>(request);
-            var account = await _accountService.OpenAccountAsync(accountDto);
+            //var account = await _accountService.OpenAccountAsync(accountDto);
 
-            var result = await _accountService.OpenAccount();
-            var response = _mapper.Map<SearchResponse>(result);
+            //var result = await _accountService.OpenAccount();
+            //var response = _mapper.Map<SearchResponse>(result);
 
-            return StatusCode((int)response.HttpStatusCod, response);
+            //return StatusCode((int)response.HttpStatusCode, response);
+            return StatusCode(200);
         }
 
         //[HttpGet("{customerId}")]
