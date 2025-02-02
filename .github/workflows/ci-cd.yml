@@ -18,24 +18,24 @@ jobs:
 
       - name: Restore .NET dependencies
         run: |
-          dotnet restore BSynchro.RJP.Accounts.WebApi/BSynchro.RJP.Accounts.WebApi.csproj
-          dotnet restore BSynchro.RJP.Transactions.WebApi/BSynchro.RJP.Transactions.WebApi.csproj
+          dotnet restore BSynchro.RJP.Accounts.WebAPI/BSynchro.RJP.Accounts.WebAPI.csproj
+          dotnet restore BSynchro.RJP.Transactions.WebAPI/BSynchro.RJP.Transactions.WebAPI.csproj
 
-      - name: Build and Publish Accounts WebApi
+      - name: Build and Publish Accounts WebAPI
         run: |
-          dotnet publish BSynchro.RJP.Accounts.WebApi/BSynchro.RJP.Accounts.WebApi.csproj -c Release -o ./publish/accounts
+          dotnet publish BSynchro.RJP.Accounts.WebAPI/BSynchro.RJP.Accounts.WebAPI.csproj -c Release -o ./publish/accounts
 
-      - name: Build and Publish Transactions WebApi
+      - name: Build and Publish Transactions WebAPI
         run: |
-          dotnet publish BSynchro.RJP.Transactions.WebApi/BSynchro.RJP.Transactions.WebApi.csproj -c Release -o ./publish/transactions
+          dotnet publish BSynchro.RJP.Transactions.WebAPI/BSynchro.RJP.Transactions.WebAPI.csproj -c Release -o ./publish/transactions
 
-      - name: Upload Accounts WebApi Artifact
+      - name: Upload Accounts WebAPI Artifact
         uses: actions/upload-artifact@v4
         with:
           name: accounts-api
           path: ./publish/accounts
 
-      - name: Upload Transactions WebApi Artifact
+      - name: Upload Transactions WebAPI Artifact
         uses: actions/upload-artifact@v4
         with:
           name: transactions-api
@@ -67,13 +67,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download Accounts WebApi Artifact
+      - name: Download Accounts WebAPI Artifact
         uses: actions/download-artifact@v4
         with:
           name: accounts-api
           path: ./publish/accounts
 
-      - name: Deploy Accounts WebApi to Azure
+      - name: Deploy Accounts WebAPI to Azure
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_ACCOUNTS_SERVICE }}
@@ -85,13 +85,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download Transactions WebApi Artifact
+      - name: Download Transactions WebAPI Artifact
         uses: actions/download-artifact@v4
         with:
           name: transactions-api
           path: ./publish/transactions
 
-      - name: Deploy Transactions WebApi to Azure
+      - name: Deploy Transactions WebAPI to Azure
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_TRANSACTIONS_SERVICE }}
