@@ -51,8 +51,10 @@ To run the backend project:
   12)This will create an initial database migration.
   13)Run this command: Update-Database -Context CoreDbContext.
   14)This will apply changes to the database.
-  15)Now set the BSynchro.RJP.Accounts.WebAPI and BSynchro.RJP.Transactions.API to run as startup projects.
-  16)Projects will run smoothly.
+  15)Navigate to ConfigurationExtension.cs under Accounts microservice.
+  16)Ensure the frontend web app origin is configured and matches the port of the running web app.
+  17)Now set the BSynchro.RJP.Accounts.WebAPI and BSynchro.RJP.Transactions.API to run as startup projects.
+  18)Projects will run smoothly.
 
 To run the front project:
  1)Ensure backend project is running.
