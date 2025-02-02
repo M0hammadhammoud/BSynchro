@@ -8,6 +8,8 @@ namespace BSynchro.RJP.Transactions.Application
     {
         public static void InjectServices(this IServiceCollection services)
         {
+            services.AddHostedService<MessageReceiverService>();
+
             services.AddScoped<IRequestInfoService, RequestInfoService>();
             services.AddTransient<ITransactionService, TransactionService>();
         }

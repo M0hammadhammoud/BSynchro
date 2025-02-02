@@ -10,12 +10,14 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="9.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BSynchro.RJP.Accounts.Domain\BSynchro.RJP.Accounts.Domain.csproj" />
+    <ProjectReference Include="..\Common.MessageQueueSender\Common.MessageQueueSender.csproj" />
   </ItemGroup>
 
 </Project>

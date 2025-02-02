@@ -16,8 +16,8 @@ namespace BSynchro.RJP.Transactions.WebAPI.Mapping
 
             CreateMap<CreateTransactionRequest, TransactionDTO>();
 
-            CreateMap<string, BaseResponse>()
-               .ForMember(dest => dest.Message, opt => opt.MapFrom(src => src));
+            CreateMap<(bool IsSuccess, string Message), BaseResponse>()
+               .ForMember(dest => dest.Message, opt => opt.MapFrom(src => src.Message));
         }
     }
 }

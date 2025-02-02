@@ -12,14 +12,14 @@ namespace BSynchro.RJP.Transactions.Application.Services
         private readonly ITransactionRepository _transactionRepository;
         private readonly IMapper _mapper;
 
-        public TransactionService(ITransactionRepository transactionRepository, 
+        public TransactionService(ITransactionRepository transactionRepository,
                                   IMapper mapper)
         {
             _transactionRepository = transactionRepository;
             _mapper = mapper;
         }
 
-        public async Task<string> CreateTransactionAsync(TransactionDTO transaction)
+        public async Task<(bool IsSuccess, string Message)> CreateTransactionAsync(TransactionDTO transaction)
         {
             var transactionDocument = _mapper.Map<Transaction>(transaction);
             transactionDocument.Id = Guid.NewGuid();
@@ -27,12 +27,12 @@ namespace BSynchro.RJP.Transactions.Application.Services
 
             if (isSuccess)
             {
-                return BusinessMessages.TransactionSuccess;
+                return (true, BusinessMessages.TransactionSuccess);
             }
 
-            return BusinessMessages.TransactionFail;
+            return (false, BusinessMessages.TransactionFail);
         }
- 
+
         public async Task GetTransactions()
         {
 

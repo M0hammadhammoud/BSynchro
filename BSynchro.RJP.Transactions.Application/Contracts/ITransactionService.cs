@@ -4,6 +4,6 @@ namespace BSynchro.RJP.Transactions.Application.Contracts
 {
     public interface ITransactionService
     {
-        Task<string> CreateTransactionAsync(TransactionDTO transaction);
+        Task<(bool IsSuccess, string Message)> CreateTransactionAsync(TransactionDTO transaction);
     }
 }

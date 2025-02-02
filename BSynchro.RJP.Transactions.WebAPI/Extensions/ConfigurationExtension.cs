@@ -3,6 +3,7 @@ using BSynchro.RJP.Transactions.Application;
 using BSynchro.RJP.Transactions.Infrastructure;
 using BSynchro.RJP.Transactions.WebAPI.Mapping;
 using BSynchro.RJP.Transactions.WebAPI.Middlewares;
+using Common.MessageQueueSender.Models.DTOs;
 using Common.Utitlities.Contracts;
 using Common.Utitlities.Helpers;
 using Microsoft.AspNetCore.DataProtection;
@@ -23,6 +24,8 @@ namespace BSynchro.RJP.Transactions.WebAPI.Extensions
 
             //configure data protector
             var dataProtector = builder.Services.ConfigureDataProtector();
+
+            builder.Services.AddTransient(sp => builder.Configuration.GetSection("RabbitMq").Get<RabbitMqConfigurationDTO>());
 
             //services
             builder.Services.InjectServices();

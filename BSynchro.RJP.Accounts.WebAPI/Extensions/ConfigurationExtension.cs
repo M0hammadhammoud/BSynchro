@@ -30,7 +30,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
             builder.Services.AddValidatorsFromAssemblyContaining<AccountValidator>();
 
             //services
-            builder.Services.InjectServices();
+            builder.Services.InjectServices(builder.Configuration);
 
             //repositories
             builder.Services.InjectRepositories(builder.Configuration);

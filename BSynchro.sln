@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.WebAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.MongoDb", "Common.MongoDb\Common.MongoDb.csproj", "{D346F680-FC72-485F-B748-EFA4F5E538AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.MessageQueueSender", "Common.MessageQueueSender\Common.MessageQueueSender.csproj", "{67565AF9-67D3-4FD7-BDA6-214E575A37BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67565AF9-67D3-4FD7-BDA6-214E575A37BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67565AF9-67D3-4FD7-BDA6-214E575A37BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67565AF9-67D3-4FD7-BDA6-214E575A37BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67565AF9-67D3-4FD7-BDA6-214E575A37BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{50B1F278-FA9E-458E-9D3E-1FE2D5643107} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
 		{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
 		{D346F680-FC72-485F-B748-EFA4F5E538AC} = {09D6CAC8-BEA3-41DC-B54A-E3C2DF8AA38E}
+		{67565AF9-67D3-4FD7-BDA6-214E575A37BD} = {09D6CAC8-BEA3-41DC-B54A-E3C2DF8AA38E}
 	EndGlobalSection
 EndGlobal
