@@ -1,0 +1,119 @@
+name: Deploy .NET 8 Microservices and Angular 18 App
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  # Job 1: Build and Publish Artifacts
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore .NET dependencies
+        run: |
+          dotnet restore BSyncro.RJP.Accounts.WebApi/BSyncro.RJP.Accounts.WebApi.csproj
+          dotnet restore BSyncro.RJP.Transactions.WebApi/BSyncro.RJP.Transactions.WebApi.csproj
+
+      - name: Build and Publish Accounts WebApi
+        run: |
+          dotnet publish BSyncro.RJP.Accounts.WebApi/BSyncro.RJP.Accounts.WebApi.csproj -c Release -o ./publish/accounts
+
+      - name: Build and Publish Transactions WebApi
+        run: |
+          dotnet publish BSyncro.RJP.Transactions.WebApi/BSyncro.RJP.Transactions.WebApi.csproj -c Release -o ./publish/transactions
+
+      - name: Upload Accounts WebApi Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: accounts-api
+          path: ./publish/accounts
+
+      - name: Upload Transactions WebApi Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: transactions-api
+          path: ./publish/transactions
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Angular Dependencies
+        run: |
+          cd angular-app
+          npm install
+
+      - name: Build Angular App
+        run: |
+          cd angular-app
+          npm run build --configuration=production
+
+      - name: Upload Angular Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: angular-app
+          path: angular-app/dist/angular-app
+
+  # Job 2: Deploy Accounts Microservice
+  deploy-accounts-api:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Accounts WebApi Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: accounts-api
+          path: ./publish/accounts
+
+      - name: Deploy Accounts WebApi to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_ACCOUNTS_SERVICE }}
+          publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+          package: ./publish/accounts
+
+  # Job 3: Deploy Transactions Microservice
+  deploy-transactions-api:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Transactions WebApi Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: transactions-api
+          path: ./publish/transactions
+
+      - name: Deploy Transactions WebApi to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_TRANSACTIONS_SERVICE }}
+          publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+          package: ./publish/transactions
+
+  # Job 4: Deploy Angular App
+  deploy-angular:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Angular Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: angular-app
+          path: angular-app/dist/angular-app
+
+      - name: Deploy Angular App to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_ANGULAR_WEB_APP }}
+          publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+          package: angular-app/dist/angular-app

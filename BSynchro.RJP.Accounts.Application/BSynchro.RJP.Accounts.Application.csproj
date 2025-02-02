@@ -20,4 +20,9 @@
     <ProjectReference Include="..\Common.MessageQueueSender\Common.MessageQueueSender.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Models\Responses\" />
+  </ItemGroup>
+
 </Project>

@@ -18,5 +18,12 @@ namespace BSynchro.RJP.Transactions.Infrastructure.Repositories
         {
             return await _dataHelper.AddNewRecord(transaction, Collections.Transactions);
         }
+
+        public async Task<List<Transaction>> GetByAccountIdsAsync(List<Guid> accountIds)
+        {
+            var result = await _dataHelper.GetRecordsByCondition<Transaction>(x => accountIds.Contains(x.AccountId), x => x.TransactedOn, null, Collections.Transactions);
+
+            return result.ToList();
+        }
     }
 }

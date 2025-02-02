@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
+using BSynchro.RJP.Accounts.Application.Models.Requests;
 using BSynchro.RJP.Accounts.Domain.Entities;
+using Common.MessageQueueSender.Models.DTOs;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace BSynchro.RJP.Accounts.Application.Mapping

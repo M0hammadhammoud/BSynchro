@@ -33,9 +33,11 @@ namespace BSynchro.RJP.Transactions.Application.Services
             return (false, BusinessMessages.TransactionFail);
         }
 
-        public async Task GetTransactions()
+        public async Task<List<TransactionDTO>> GetTransactions(List<Guid> accountIds)
         {
+            var transactions = await _transactionRepository.GetByAccountIdsAsync(accountIds);
 
+            return _mapper.Map<List<TransactionDTO>>(transactions);
         }
     }
 }

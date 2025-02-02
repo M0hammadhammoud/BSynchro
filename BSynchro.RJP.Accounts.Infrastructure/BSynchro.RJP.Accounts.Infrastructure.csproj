@@ -18,10 +18,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BSynchro.RJP.Accounts.Domain\BSynchro.RJP.Accounts.Domain.csproj" />
+    <ProjectReference Include="..\Common.Utitlities\Common.Utitlities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Responses\Transactions\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 

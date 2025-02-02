@@ -1,8 +1,9 @@
-﻿using BSynchro.RJP.Transactions.Domain.Enums;
+﻿using BSynchro.RJP.Accounts.Domain.Enums;
+using Common.MessageQueueSender.Models.Requests;
 
-namespace BSynchro.RJP.Transactions.Application.Models.DTOs
+namespace BSynchro.RJP.Accounts.Application.Models.Requests
 {
-    public class TransactionDTO
+    public class CreateTransactionRequest : BaseMessageRequest
     {
         public Guid AccountId { get; set; }
         public decimal Amount { get; set; }

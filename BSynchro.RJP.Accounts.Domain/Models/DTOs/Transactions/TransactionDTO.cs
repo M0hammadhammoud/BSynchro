@@ -1,9 +1,10 @@
-﻿using BSynchro.RJP.Transactions.Domain.Enums;
+﻿using BSynchro.RJP.Accounts.Domain.Enums;
 
-namespace BSynchro.RJP.Transactions.Application.Models.DTOs
+namespace BSynchro.RJP.Accounts.Domain.Models.DTOs.Transactions
 {
     public class TransactionDTO
     {
+        public Guid TransactionId { get; set; }
         public Guid AccountId { get; set; }
         public decimal Amount { get; set; }
         public TransactionTypeEnum TransactionType { get; set; }

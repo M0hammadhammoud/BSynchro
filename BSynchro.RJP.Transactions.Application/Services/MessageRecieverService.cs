@@ -1,6 +1,8 @@
 ﻿using BSynchro.RJP.Transactions.Application.Contracts;
+using BSynchro.RJP.Transactions.Application.Models.DTOs;
 using BSynchro.RJP.Transactions.Application.Models.DTOs.RabbitMQ;
 using Common.MessageQueueSender.Models.DTOs;
+using Common.MessageQueueSender.Models.Enums;
 using Common.MessageQueueSender.Models.Requests;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -52,7 +54,17 @@ namespace BSynchro.RJP.Transactions.Application.Services
 
                             var eventObject = JsonConvert.DeserializeObject<BaseMessageRequest>(content);
 
-                            var result = await _transactionService.CreateTransactionAsync(new() { AccountId = new(), Amount = 50, TransactedOn = DateTime.UtcNow, TransactionType = Domain.Enums.TransactionTypeEnum.Credit });
+                            (bool IsSuccess, string Message) result = (false, string.Empty);
+
+                            switch (eventObject.MessageType)
+                            {
+                                case MessageTypeEnum.Transaction:
+                                    var request = JsonConvert.DeserializeObject<TransactionDTO>(content);
+                                    result = await _transactionService.CreateTransactionAsync(request);
+                                    break;
+                                default:
+                                    break;
+                            }
 
                             if (result.IsSuccess)
                             {

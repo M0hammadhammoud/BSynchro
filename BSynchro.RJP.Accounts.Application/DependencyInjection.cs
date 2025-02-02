@@ -18,6 +18,9 @@ namespace BSynchro.RJP.Accounts.Application
 
             services.AddScoped<IRequestInfoService, RequestInfoService>();
             services.AddScoped<IAccountService, AccountService>();
+
+            //registered this service as a transient since user info could be updated several times due to account containing calculated field(s)
+            services.AddTransient<ICustomerService, CustomerService>();
         }   
     }
 }

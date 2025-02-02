@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BSynchro.RJP.Accounts.Infrastructure.Migrations
 {
     [DbContext(typeof(CoreDBContext))]
-    [Migration("20250201200308_InitialDbMigration")]
+    [Migration("20250202151238_InitialDbMigration")]
     partial class InitialDbMigration
     {
         /// <inheritdoc />
@@ -32,6 +32,9 @@ namespace BSynchro.RJP.Accounts.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");

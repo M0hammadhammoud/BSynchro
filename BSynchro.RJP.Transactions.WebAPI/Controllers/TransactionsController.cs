@@ -3,6 +3,7 @@ using BSynchro.RJP.Transactions.Application.Contracts;
 using BSynchro.RJP.Transactions.Application.Models.DTOs;
 using BSynchro.RJP.Transactions.WebAPI.Models.Requests.Transactions;
 using BSynchro.RJP.Transactions.WebAPI.Models.Responses;
+using BSynchro.RJP.Transactions.WebAPI.Models.Responses.Transactions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSynchro.RJP.Transactions.WebAPI.Controllers
@@ -27,6 +28,15 @@ namespace BSynchro.RJP.Transactions.WebAPI.Controllers
             var transactionDTO = _mapper.Map<TransactionDTO>(request);
             var result = await _transactionService.CreateTransactionAsync(transactionDTO);
             var response = _mapper.Map<BaseResponse>(result);
+
+            return StatusCode((int)response.HttpStatusCode, response);
+        }
+
+        [HttpPost("GetTransactions")]
+        public async Task<IActionResult> GetTransactions(GetTransactionsRequest request)
+        {
+            var result = await _transactionService.GetTransactions(request.AccountIds);
+            var response = _mapper.Map<GetTransactionsResponse>(result);
 
             return StatusCode((int)response.HttpStatusCode, response);
         }

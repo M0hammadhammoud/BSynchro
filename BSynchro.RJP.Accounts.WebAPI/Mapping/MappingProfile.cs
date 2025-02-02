@@ -2,7 +2,7 @@
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
 using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Accounts;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
-using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Accounts;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Customers;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace BSynchro.RJP.Accounts.WebAPI.Mapping

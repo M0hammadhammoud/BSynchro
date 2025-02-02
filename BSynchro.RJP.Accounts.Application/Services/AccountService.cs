@@ -2,12 +2,13 @@
 using BSynchro.RJP.Accounts.Application.Constants;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
+using BSynchro.RJP.Accounts.Application.Models.Requests;
 using BSynchro.RJP.Accounts.Domain.Contracts;
 using BSynchro.RJP.Accounts.Domain.Entities;
+using BSynchro.RJP.Accounts.Domain.Enums;
 using Common.MessageQueueSender.Contracts;
 using Common.MessageQueueSender.Models.DTOs;
 using Common.MessageQueueSender.Models.Enums;
-using Common.MessageQueueSender.Models.Requests;
 
 namespace BSynchro.RJP.Accounts.Application.Services
 {
@@ -32,6 +33,7 @@ namespace BSynchro.RJP.Accounts.Application.Services
         public async Task<string> OpenAccountAsync(OpenAccountDTO openAccount)
         {
             var account = _mapper.Map<Account>(openAccount);
+            account.AccountId = Guid.NewGuid();
             _unitOfWork.Repository<Account>().Add(account);
             await _unitOfWork.Save();
 
@@ -39,16 +41,22 @@ namespace BSynchro.RJP.Accounts.Application.Services
             {
                 //create transaction for this part
                 var messageConfiguration = _messageConfigurations.First(x => x.MessageType == MessageTypeEnum.Transaction);
-                var result = await _messageQueueSender.PublishMessage(messageConfiguration, new BaseMessageRequest() {  MessageType = MessageTypeEnum.Transaction});
+
+                var createTransactionRequest = new CreateTransactionRequest()
+                {
+                    AccountId = account.AccountId,
+                    Amount = openAccount.InitialCredit,
+                    MessageType = messageConfiguration.MessageType,
+                    TransactedOn = DateTime.UtcNow,
+                    TransactionType = TransactionTypeEnum.Credit
+                };
+
+                var result = await _messageQueueSender.PublishMessage(messageConfiguration, createTransactionRequest);
+                account.Balance = openAccount.InitialCredit;
+                await _unitOfWork.Save();
             }
 
             return BusinessMessages.AccountCreated;
-        }
-
-        public async Task<List<CustomerDTO>> GetAllCustomersAsync()
-        {
-            var customers = await _unitOfWork.Repository<Customer>().GetAllAsync();
-            return _mapper.Map<List<CustomerDTO>>(customers);
-        }
+        } 
     }
 }

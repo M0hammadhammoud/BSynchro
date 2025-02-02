@@ -30,6 +30,9 @@ namespace BSynchro.RJP.Accounts.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
