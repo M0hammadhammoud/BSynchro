@@ -1,4 +1,4 @@
-﻿using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
+﻿using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Accounts;
 using FluentValidation;
 using Microsoft.AspNetCore.DataProtection;
 

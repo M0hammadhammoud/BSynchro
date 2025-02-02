@@ -1,9 +1,9 @@
 using AutoMapper;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
-using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
+using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Accounts;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
-using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Accounts;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,20 +11,17 @@ namespace BSynchro.RJP.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
 
-        private readonly ILogger<AccountController> _logger;
         private readonly IAccountService _accountService;
         private readonly IMapper _mapper;
         private readonly IValidator<OpenAccountRequest> _accountValidator;
 
-        public AccountController(ILogger<AccountController> logger,
-                                 IAccountService accountService,
-                                 IMapper mapper,
-                                 IValidator<OpenAccountRequest> accountValidator)
+        public AccountsController(IAccountService accountService,
+                                  IMapper mapper,
+                                  IValidator<OpenAccountRequest> accountValidator)
         {
-            _logger = logger;
             _accountService = accountService;
             _mapper = mapper;
             _accountValidator = accountValidator;

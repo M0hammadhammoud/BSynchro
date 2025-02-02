@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BSynchro.RJP.Accounts.Application.Models.DTOs;
-using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account;
+using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Accounts;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses;
-using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account;
+using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Accounts;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace BSynchro.RJP.Accounts.WebAPI.Mapping

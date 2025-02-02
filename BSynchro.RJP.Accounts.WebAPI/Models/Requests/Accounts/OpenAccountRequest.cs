@@ -1,4 +1,4 @@
-﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Requests.Account
+﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Requests.Accounts
 {
     public class OpenAccountRequest
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1A549D8C-297F-4839-BFF1-2376351FF478}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.Application", "BSynchro.RJP.Accounts.Application\BSynchro.RJP.Accounts.Application.csproj", "{50B1F278-FA9E-458E-9D3E-1FE2D5643107}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSynchro.RJP.Accounts.WebAPI", "BSynchro.RJP.Accounts.WebAPI\BSynchro.RJP.Accounts.WebAPI.csproj", "{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.MongoDb", "Common.MongoDb\Common.MongoDb.csproj", "{D346F680-FC72-485F-B748-EFA4F5E538AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D346F680-FC72-485F-B748-EFA4F5E538AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +93,6 @@ Global
 		{8CAAD8BC-5173-41C5-8649-C12BC1C299E3} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
 		{50B1F278-FA9E-458E-9D3E-1FE2D5643107} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
 		{7E97F55C-E4CB-49B2-9A3A-CE2B9FB5DF50} = {6FD7E9A5-AB48-43F7-B1B4-35E3E0027491}
+		{D346F680-FC72-485F-B748-EFA4F5E538AC} = {09D6CAC8-BEA3-41DC-B54A-E3C2DF8AA38E}
 	EndGlobalSection
 EndGlobal

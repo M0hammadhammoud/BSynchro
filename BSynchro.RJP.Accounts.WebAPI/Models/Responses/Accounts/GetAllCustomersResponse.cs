@@ -1,6 +1,6 @@
 ﻿using BSynchro.RJP.Accounts.Application.Models.DTOs;
 
-namespace BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account
+namespace BSynchro.RJP.Accounts.WebAPI.Models.Responses.Accounts
 {
     public class GetAllCustomersResponse : BaseResponse
     {

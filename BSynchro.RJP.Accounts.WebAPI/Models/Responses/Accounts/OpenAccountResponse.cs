@@ -1,4 +1,4 @@
-﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Responses.Account
+﻿namespace BSynchro.RJP.Accounts.WebAPI.Models.Responses.Accounts
 {
     public class OpenAccountResponse : BaseResponse
     {

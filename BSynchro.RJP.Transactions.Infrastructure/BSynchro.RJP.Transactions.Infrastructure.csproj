@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\BSynchro.RJP.Transactions.Domain\BSynchro.RJP.Transactions.Domain.csproj" />
+    <ProjectReference Include="..\Common.MongoDb\Common.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>
