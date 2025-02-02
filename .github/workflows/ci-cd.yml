@@ -106,12 +106,12 @@ jobs:
       - name: Download Angular Artifact
         uses: actions/download-artifact@v4
         with:
-          name: angular-app
-          path: angular-app/dist/angular-app
+          name: BSynchro-RJP
+          path: BSynchro.RJP.WebApp/BSynchro-RJP/dist/BSynchro-RJP
 
       - name: Deploy Angular App to Azure
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_ANGULAR_WEB_APP }}
           publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
-          package: angular-app/dist/angular-app
+          package: BSynchro.RJP.WebApp/BSynchro-RJP/dist/BSynchro-RJP
