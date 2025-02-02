@@ -48,19 +48,19 @@ jobs:
 
       - name: Install Angular Dependencies
         run: |
-          cd angular-app
+          cd BSchyro-RJP
           npm install
 
       - name: Build Angular App
         run: |
-          cd angular-app
+          cd BSchyro-RJP
           npm run build --configuration=production
 
       - name: Upload Angular Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: angular-app
-          path: angular-app/dist/angular-app
+          name: BSchyro-RJP
+          path: BSchyro-RJP/dist/BSchyro-RJP
 
   # Job 2: Deploy Accounts Microservice
   deploy-accounts-api:
