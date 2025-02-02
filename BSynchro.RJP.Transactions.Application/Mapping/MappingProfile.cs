@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BSynchro.RJP.Transactions.Application.Models.DTOs;
+using BSynchro.RJP.Transactions.Domain.Documents;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace BSynchro.RJP.Transactions.Application.Mapping
@@ -10,6 +12,8 @@ namespace BSynchro.RJP.Transactions.Application.Mapping
         public MappingProfile(IDataProtector dataProtector)
         {
             _dataProtector = dataProtector;
+
+            CreateMap<TransactionDTO, Transaction>();
         }
     }
 }

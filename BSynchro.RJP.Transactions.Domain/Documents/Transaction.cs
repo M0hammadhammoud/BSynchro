@@ -1,10 +1,12 @@
 ﻿using BSynchro.RJP.Transactions.Domain.Enums;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BSynchro.RJP.Transactions.Domain.Documents
 {
     public class Transaction : BaseDocument
     {
-        public Guid Id { get; set; }
+        [BsonRepresentation(BsonType.String)]
         public Guid AccountId { get; set; }
         public decimal Amount { get; set; }
         public TransactionTypeEnum TransactionType { get; set; }

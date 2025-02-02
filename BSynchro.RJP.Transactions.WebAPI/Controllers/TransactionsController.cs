@@ -14,11 +14,13 @@ namespace BSynchro.RJP.Transactions.WebAPI.Controllers
         private readonly ITransactionService _transactionService;
         private readonly IMapper _mapper;
 
-        public TransactionsController(ITransactionService transactionService)
+        public TransactionsController(ITransactionService transactionService, 
+                                      IMapper mapper)
         {
             _transactionService = transactionService;
+            _mapper = mapper;
         }
-         
+
         [HttpPost]
         public async Task<IActionResult> Post(CreateTransactionRequest request)
         {

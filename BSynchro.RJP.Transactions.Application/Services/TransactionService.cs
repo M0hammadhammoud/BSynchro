@@ -22,6 +22,7 @@ namespace BSynchro.RJP.Transactions.Application.Services
         public async Task<string> CreateTransactionAsync(TransactionDTO transaction)
         {
             var transactionDocument = _mapper.Map<Transaction>(transaction);
+            transactionDocument.Id = Guid.NewGuid();
             var isSuccess = await _transactionRepository.AddTransactionAsync(transactionDocument);
 
             if (isSuccess)
