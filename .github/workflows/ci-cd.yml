@@ -56,11 +56,19 @@ jobs:
           cd BSynchro.RJP.WebApp/BSynchro-RJP
           npm run build --configuration=production
 
+     - name: Debug Angular Build Output
+        run: |
+          ls -R BSynchro.RJP.WebApp/BSynchro-RJP/dist/
+
+      - name: Ensure Angular Artifact Directory Exists
+        run: mkdir -p BSynchro.RJP.WebApp/BSynchro-RJP/dist/BSynchro-RJP
+
       - name: Upload Angular Artifact
         uses: actions/upload-artifact@v4
         with:
           name: BSynchro-RJP
           path: BSynchro.RJP.WebApp/BSynchro-RJP/dist/BSynchro-RJP
+          retention-days: 5  # Ensures artifact does not expire quickly
 
   # Job 2: Deploy Accounts Microservice
   deploy-accounts-api:
@@ -103,6 +111,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Create Directory for Angular Artifact
+        run: mkdir -p BSynchro.RJP.WebApp/BSynchro-RJP/dist/BSynchro-RJP
+
+      - name: Debug Available Artifacts Before Download
+        run: ls -R
+
       - name: Download Angular Artifact
         uses: actions/download-artifact@v4
         with:
