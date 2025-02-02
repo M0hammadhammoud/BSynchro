@@ -34,6 +34,7 @@ AutoMapper (Object Mapping)
 RabbitMQ (Message Queue for Asynchronous/Synchronous Processing)
 MongoDB (NoSQL Storage)
 CI/CD
+Docker (for building images)
 
 To run the backend project:
   1)Clone the repository.
