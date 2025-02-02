@@ -1,5 +1,3 @@
-name: Deploy .NET 8 Microservices and Angular 18 App
-
 on:
   push:
     branches:
@@ -32,13 +30,13 @@ jobs:
           dotnet publish BSyncro.RJP.Transactions.WebApi/BSyncro.RJP.Transactions.WebApi.csproj -c Release -o ./publish/transactions
 
       - name: Upload Accounts WebApi Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: accounts-api
           path: ./publish/accounts
 
       - name: Upload Transactions WebApi Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: transactions-api
           path: ./publish/transactions
@@ -59,7 +57,7 @@ jobs:
           npm run build --configuration=production
 
       - name: Upload Angular Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: angular-app
           path: angular-app/dist/angular-app
@@ -70,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Accounts WebApi Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: accounts-api
           path: ./publish/accounts
@@ -88,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Transactions WebApi Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: transactions-api
           path: ./publish/transactions
@@ -106,7 +104,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Angular Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: angular-app
           path: angular-app/dist/angular-app
