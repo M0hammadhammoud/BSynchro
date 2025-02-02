@@ -1,5 +1,4 @@
 using AutoMapper;
-using Azure;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Customers;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Customers;

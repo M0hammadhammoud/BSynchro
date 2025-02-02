@@ -17,6 +17,9 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
         // this extension method defines some configuration for our solution and add DI and specify different lifetime for services
         public static void InjectServicesAndRepositories(this IServiceCollection services, WebApplicationBuilder builder)
         {
+            //Enabele CORS for frontend
+            builder.Services.ConfigureCors();
+
             //serilog configuration
             builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration));
 
@@ -51,7 +54,7 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
 
             return protector;
         }
-       
+
         public static void UseCustomInterceptorMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<InterceptorMiddleware>();
@@ -67,6 +70,21 @@ namespace BSynchro.RJP.Accounts.WebAPI.Extensions
 
             var mapper = mappingConfiguration.CreateMapper();
             services.AddSingleton(mapper);
+        }
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "CustomOrigins",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200") // Allow Angular app
+                              .AllowAnyMethod() // Allow GET, POST, PUT, DELETE, etc.
+                              .AllowAnyHeader() // Allow all headers
+                              .AllowCredentials(); // If using authentication
+                    });
+            });
         }
     }
 }

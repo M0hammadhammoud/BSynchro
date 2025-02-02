@@ -1,0 +1,30 @@
+@if (isAddingAccount){
+<app-new-account
+  [customerId]="customer.customerId"
+  (close)="onCloseAddAccount()"
+/>
+}
+<section id="transactions">
+  <header>
+    <h2>{{ customer.firstName }} {{ customer.lastName }}'s Transactions</h2>
+    <menu>
+      <button (click)="onStartAddAccount()">Add Account</button>
+    </menu>
+  </header>
+  <ul>
+    @for(account of customer.accounts; track account.accountId) {
+    <li>
+      <p>
+        Account Id: {{ account.accountId }}
+        <br />
+        Balance: {{ account.balance }}
+      </p>
+    </li>
+    @for (transaction of account.transactions; track transaction.transactionId)
+    {
+    <li>
+      <app-transaction [transaction]="transaction" />
+    </li>
+    } }
+  </ul>
+</section>

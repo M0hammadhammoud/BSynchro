@@ -1,0 +1,14 @@
+<app-card>
+  <article>
+    <p>
+      <b>Transaction Id:</b><span>{{ transaction.transactionId }}</span>
+    </p>
+    <p>
+      <b>Date:</b
+      ><time>{{ transaction.transactedOn | date : "fullDate" }}</time>
+    </p>
+    <p>
+      <b>Amount:</b><span>{{ transaction.amount }}</span>
+    </p>
+  </article>
+</app-card>

@@ -1,0 +1,21 @@
+<app-header />
+
+<main>
+  <ul id="customers">
+    @for (customer of customers; track customer.customerId){
+    <li>
+      <app-customer
+        [customer]="customer"
+        [selected]="customer.customerId === selectedCustomerId"
+        (select)="onSelectCustomer($event)"
+      />
+    </li>
+    }
+  </ul>
+
+  @if (selectedCustomer){
+  <app-transactions [customer]="selectedCustomer" />
+  }@else {
+  <p id="fallback">Select a customer to see their transactions!</p>
+  }
+</main>
