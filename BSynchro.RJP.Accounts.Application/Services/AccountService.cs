@@ -32,6 +32,7 @@ namespace BSynchro.RJP.Accounts.Application.Services
 
         public async Task<string> OpenAccountAsync(OpenAccountDTO openAccount)
         {
+            //TODO we could later handle failure cases by adding transaction support to our db context so we can rollback 
             var account = _mapper.Map<Account>(openAccount);
             account.AccountId = Guid.NewGuid();
             _unitOfWork.Repository<Account>().Add(account);

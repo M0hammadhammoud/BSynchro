@@ -13,6 +13,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["BSynchro.RJP.Transactions.WebAPI/BSynchro.RJP.Transactions.WebAPI.csproj", "BSynchro.RJP.Transactions.WebAPI/"]
+COPY ["BSynchro.RJP.Transactions.Application/BSynchro.RJP.Transactions.Application.csproj", "BSynchro.RJP.Transactions.Application/"]
+COPY ["BSynchro.RJP.Transactions.Domain/BSynchro.RJP.Transactions.Domain.csproj", "BSynchro.RJP.Transactions.Domain/"]
+COPY ["Common.MessageQueueSender/Common.MessageQueueSender.csproj", "Common.MessageQueueSender/"]
+COPY ["BSynchro.RJP.Transactions.Infrastructure/BSynchro.RJP.Transactions.Infrastructure.csproj", "BSynchro.RJP.Transactions.Infrastructure/"]
+COPY ["Common.MongoDb/Common.MongoDb.csproj", "Common.MongoDb/"]
+COPY ["Common.Utitlities/Common.Utitlities.csproj", "Common.Utitlities/"]
 RUN dotnet restore "./BSynchro.RJP.Transactions.WebAPI/BSynchro.RJP.Transactions.WebAPI.csproj"
 COPY . .
 WORKDIR "/src/BSynchro.RJP.Transactions.WebAPI"
