@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BSchyro-RJP
-          path: BSchyro-RJP/dist/BSchyro-RJP
+          path: BSynchro.RJP.WebApp/BSchyro-RJP/dist/BSchyro-RJP
 
   # Job 2: Deploy Accounts Microservice
   deploy-accounts-api:
