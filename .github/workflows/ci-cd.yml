@@ -18,16 +18,16 @@ jobs:
 
       - name: Restore .NET dependencies
         run: |
-          dotnet restore BSyncro.RJP.Accounts.WebApi/BSyncro.RJP.Accounts.WebApi.csproj
-          dotnet restore BSyncro.RJP.Transactions.WebApi/BSyncro.RJP.Transactions.WebApi.csproj
+          dotnet restore BSynchro.RJP.Accounts.WebApi/BSynchro.RJP.Accounts.WebApi.csproj
+          dotnet restore BSynchro.RJP.Transactions.WebApi/BSynchro.RJP.Transactions.WebApi.csproj
 
       - name: Build and Publish Accounts WebApi
         run: |
-          dotnet publish BSyncro.RJP.Accounts.WebApi/BSyncro.RJP.Accounts.WebApi.csproj -c Release -o ./publish/accounts
+          dotnet publish BSynchro.RJP.Accounts.WebApi/BSynchro.RJP.Accounts.WebApi.csproj -c Release -o ./publish/accounts
 
       - name: Build and Publish Transactions WebApi
         run: |
-          dotnet publish BSyncro.RJP.Transactions.WebApi/BSyncro.RJP.Transactions.WebApi.csproj -c Release -o ./publish/transactions
+          dotnet publish BSynchro.RJP.Transactions.WebApi/BSynchro.RJP.Transactions.WebApi.csproj -c Release -o ./publish/transactions
 
       - name: Upload Accounts WebApi Artifact
         uses: actions/upload-artifact@v4
