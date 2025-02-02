@@ -53,3 +53,10 @@ To run the backend project:
   14)This will apply changes to the database.
   15)Now set the BSynchro.RJP.Accounts.WebAPI and BSynchro.RJP.Transactions.API to run as startup projects.
   16)Projects will run smoothly.
+
+To run the front project:
+ 1)Ensure backend project is running.
+ 2)ensure to have proper node verion (18).
+ 3)Navigate to the project's directory.
+ 4)Run: npm install.
+ 5)Run: ng serve.
