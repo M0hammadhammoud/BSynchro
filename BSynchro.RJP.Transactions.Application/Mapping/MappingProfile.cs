@@ -13,7 +13,8 @@ namespace BSynchro.RJP.Transactions.Application.Mapping
         {
             _dataProtector = dataProtector;
 
-            CreateMap<TransactionDTO, Transaction>().ReverseMap();
+            CreateMap<TransactionDTO, Transaction>().ReverseMap()
+                 .ForMember(dest => dest.TransactionId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }

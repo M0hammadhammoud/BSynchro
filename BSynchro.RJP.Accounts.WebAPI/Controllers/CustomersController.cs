@@ -1,4 +1,5 @@
 using AutoMapper;
+using Azure;
 using BSynchro.RJP.Accounts.Application.Contracts;
 using BSynchro.RJP.Accounts.WebAPI.Models.Requests.Customers;
 using BSynchro.RJP.Accounts.WebAPI.Models.Responses.Customers;
@@ -30,10 +31,13 @@ namespace BSynchro.RJP.WebAPI.Controllers
             return StatusCode((int)response.HttpStatusCode, response);
         }
 
-        [HttpGet("GetUserInformation")]
-        public async Task<IActionResult> GetUserInformation(GetCustomerInformationRequest request)
+        [HttpPost("GetCustomerInformation")]
+        public async Task<IActionResult> GetCustomerInformation(GetCustomerInformationRequest request)
         {
-            return Ok("result");
+            var customer = await _customerService.GetCustomerInformationAsync(request.CustomerId);
+            var response = _mapper.Map<GetCustomerInformationResponse>(customer);
+
+            return StatusCode((int)response.HttpStatusCode, response);
         }
     }
 }

@@ -23,6 +23,9 @@ namespace BSynchro.RJP.Accounts.WebAPI.Mapping
 
             CreateMap<List<CustomerDTO>, GetAllCustomersResponse>()
                 .ForMember(dest => dest.Customers, opt => opt.MapFrom(src => src));
+
+            CreateMap<CustomerDTO, GetCustomerInformationResponse>()
+              .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src));
         }
     }
 }

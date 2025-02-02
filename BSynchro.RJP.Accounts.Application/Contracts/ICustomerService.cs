@@ -5,5 +5,6 @@ namespace BSynchro.RJP.Accounts.Application.Contracts
     public interface ICustomerService
     {
         Task<List<CustomerDTO>> GetAllCustomersAsync();
+        Task<CustomerDTO> GetCustomerInformationAsync(string customerId);
     }
 }
